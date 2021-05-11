@@ -8,3 +8,11 @@ input{
   border-width: 0;
   padding: 0;
 }
+p, a, h1, h2, h3 {
+  font-family: 'Inter', sans-serif;
+}
+
+h2, p {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}

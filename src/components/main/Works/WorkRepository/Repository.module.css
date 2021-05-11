@@ -1,0 +1,27 @@
+.repository__item{
+    margin-top: 29px;
+    margin-bottom: 24px;
+    background: #fff;
+    border-radius: 6px;
+    padding: 24px 0 24px 32px;
+}
+
+.repository__link{
+    text-decoration: none;
+}
+
+.repository__link:hover{
+    text-decoration: underline;
+}
+
+.repository__title{
+    font-weight: 500;
+    font-size: 24px;
+    color: #0064EB;
+    margin-bottom: 16px;
+}
+
+.repository__text{
+    font-weight: 400;
+    font-size: 16px;
+}

@@ -1,0 +1,42 @@
+.main__profile{
+    margin: 0 98px 0 56px;
+}
+
+.profile__img{
+    border-radius: 50%;
+    margin-bottom: 29px;
+    
+}
+
+.profile__name{
+    font-weight: 600;
+    font-size: 26px;
+    color: #000;
+
+    margin-bottom: 12px;
+}
+
+.profile__link{
+    font-weight: 400;
+    font-size: 18px;
+    color: #0064EB;
+    text-decoration: none;
+}
+
+.profile__link:hover{
+    text-decoration: underline;
+}
+
+.profile__follows{    
+    margin-top: 25px;
+    display: flex;
+}
+
+.profile__inner{
+    font-size: 16px;
+    font-weight: 400;
+
+    margin-right: 16px;
+    display: flex;
+    align-items: center;
+}

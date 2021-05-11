@@ -1,7 +1,9 @@
 .header{
     background: #0064EB;
     display: flex;
+    justify-content: right;
     padding: 15px 0;
+    
 }
 
 .header__img{
@@ -16,7 +18,7 @@
     background: rgb(255, 255, 255);
     border-radius: 6px;
     padding: 8px 14px 8px 14px;
-    width:472px;
+    max-width:472px;
     align-items: center;
   }
   
