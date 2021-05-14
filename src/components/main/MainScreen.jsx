@@ -6,12 +6,14 @@ import { NotRepository } from "./NotRepository/NotRepository";
 import { Profile } from "./Profile/Profile";
 import { Works } from "./Works/Works";
 
-export const Main = () => {
+export const Main = (props) => {
+  
   return (
     <div className={s.main}>
-      <Profile/>
-      {/* <Works /> */}
-      <NotRepository />
+      <Profile data={props.data}/>
+      
+      <Works repositories={props.repositories}/>
+      {/* <NotRepository /> */}
       {/* <InitialState /> */}
       {/* <InitialStateUserNotFound /> */}
     </div>

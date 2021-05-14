@@ -4,23 +4,25 @@ import Followers from './../../../other/img/shared.svg'
 import Following from './../../../other/img/provate.svg'
 import Avatar from './../../../other/img/image_1.png'
 
-export const Profile = () =>{
+export const Profile = (props) =>{
+    console.log(props.data.followers)
     return(
         <div className={s.main__profile}>
-        <img className={s.profile__img} src={Avatar} alt="" />
+        <img className={s.profile__img} src={props.data.avatar_url} alt="" />
 
-        <h2 className={s.profile__name}>Dan Abramov</h2>
-        <a className={s.profile__link} href="#">gaearon</a>
+        <h2 className={s.profile__name}>{props.data.name}</h2>
+        <a className={s.profile__link} href={props.data.html_url}>{props.data.login}</a>
 
         <div className={s.profile__follows}>
+            
             <p className={s.profile__inner}>
                 <img src={Followers} alt="" />
-                24k
-                followers</p>
+                &nbsp;{props.data.followers}
+                &nbsp;followers</p>
             <p className={s.profile__inner}>
                 <img src={Following} alt="" />
-                26
-                following</p>
+                &nbsp;{props.data.following} 
+                &nbsp;following</p>
         </div>
       </div>
     )
