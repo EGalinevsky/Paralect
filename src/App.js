@@ -17,34 +17,34 @@ function App() {
     const profileJSON = await profile.json()
 
     const repositories = await fetch (profileJSON.repos_url)
-    const repositoriesJSON = await repositories.json()
-
+    const repositoriesJSON = await repositories.json()  
     
-
+    
     if (profileJSON){
       setData(profileJSON)
       setRepositories(repositoriesJSON)
     }
   }
 
-  console.log('data without',data)
-  console.log('data without',repositories)
+  console.log()
+
+  console.log('data без функции',data)
+  console.log('repositories без функции',repositories)
 
   useEffect(()=>{
     setName('')
     console.log('Это useEffect repositories',repositories)
     console.log('Это useEffect data', data)
-  },[data, repositories])
+  },[data,repositories])
 
   const HandlerChange = (e) =>{
-    setName(e.target.value);
+    setName(e.target.value);    
   }
   
   return (
     <div className="App">
       <Header name={name} HandlerChange={HandlerChange} submitHandler={submitHandler}/>
-      {data.login ? <Main data={data} repositories={repositories}/> : null}
-      
+      {Object.keys(data).length ? <Main data={data} repositories={repositories}/> : null}      
     </div>
   );
 }
