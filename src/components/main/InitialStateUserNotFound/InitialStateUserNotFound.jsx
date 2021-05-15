@@ -2,13 +2,13 @@ import React from "react";
 import s from "./InitialStateUserNotFound.module.css";
 import user from "./../../../other/img/user.png";
 
-export const InitialStateUserNotFound = () => {
+export const InitialStateUserNotFound = (props) => {
+  console.log(props.users)
   return (
     <div className={s.InitialStateUserNotFound}>
-  
-        <img src={user} alt="" />
-        <p>User not found</p>
-      
+        
+          <img src={user} alt="" />
+          <p>User not found</p>
     </div>
   );
 };

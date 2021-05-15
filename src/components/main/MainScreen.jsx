@@ -14,8 +14,7 @@ export const Main = (props) => {
       
       <Works repositories={props.repositories}/>
       {/* <NotRepository /> */}
-      {/* <InitialState /> */}
-      {/* <InitialStateUserNotFound /> */}
+      <InitialState />
     </div>
   );
 };
