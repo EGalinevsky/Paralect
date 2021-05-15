@@ -13,27 +13,31 @@ function App() {
   const [users, setUsers] = useState(false)
   const [istate, setIstate] = useState(true)
   const [works, setWorks] = useState(true)
+  const [loading, setLoading] = useState(false)
 
-  const submitHandler = async e => {
-
+  const submitHandler = async e => {    
     e.preventDefault()
+    setLoading(true)
     try {
       const profile = await fetch(`https://api.github.com/users/${name}`)
       const profileJSON = await profile.json()
 
       const repositories = await fetch(profileJSON.repos_url)
       const repositoriesJSON = await repositories.json()
-
+      
+      
       if (profileJSON) {
         setData(profileJSON)
         setRepositories(repositoriesJSON)
         setUsers(false)        
-        setIstate(false)
+        setIstate(false)        
       }
     } catch (err) {
       setUsers(true)
       setData(false)
       setIstate(false)
+    } finally{
+      setLoading(false)
     }
 
   }
@@ -46,6 +50,9 @@ function App() {
 
     console.log('Это useEffect repositories', repositories)
     console.log('Это useEffect data', data)
+    return (()=>{
+
+    })
   }, [data, repositories])
 
   const HandlerChange = (e) => {
@@ -54,7 +61,10 @@ function App() {
 
   return (
     <div className="App">
+      
       <Header name={name} HandlerChange={HandlerChange} submitHandler={submitHandler} />
+      {loading &&  (<div class="loader"></div>)}
+      
       {Object.keys(data).length ? <Main data={data} repositories={repositories} works={works}  /> : null}
       {users ? <InitialStateUserNotFound /> : null}
       {istate && <InitialState />}
