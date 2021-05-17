@@ -47,7 +47,7 @@ function App() {
 
   useEffect(() => {
     setName('')
-
+    
     console.log('Это useEffect repositories', repositories)
     console.log('Это useEffect data', data)
     return (()=>{
@@ -63,7 +63,7 @@ function App() {
     <div className="App">
       
       <Header name={name} HandlerChange={HandlerChange} submitHandler={submitHandler} />
-      {loading &&  (<div class="loader"></div>)}
+      {loading &&  (<div className="loader"></div>)}
       
       {Object.keys(data).length ? <Main data={data} repositories={repositories} works={works}  /> : null}
       {users ? <InitialStateUserNotFound /> : null}

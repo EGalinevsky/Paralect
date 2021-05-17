@@ -5,7 +5,6 @@ import Following from './../../../other/img/provate.svg'
 import Avatar from './../../../other/img/image_1.png'
 
 export const Profile = (props) =>{
-    console.log(props.data.followers)
     return(
         <div className={s.main__profile}>
         <img className={s.profile__img} src={props.data.avatar_url} alt="" />

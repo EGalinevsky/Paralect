@@ -1,4 +1,5 @@
 import React from "react";
+import { Paginator } from "../Paginator/Paginator";
 import { Repository } from "./WorkRepository/Repository";
 import s from "./Works.module.css";
 
@@ -16,6 +17,7 @@ export const Works = (props) => {
           title={rep.description}
         />
       ))}
+      <Paginator repositorie={props.repositories}/>
     </div>
   );
 };

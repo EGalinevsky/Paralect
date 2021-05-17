@@ -7,14 +7,13 @@ import { Profile } from "./Profile/Profile";
 import { Works } from "./Works/Works";
 
 export const Main = (props) => {
-  console.log(props.repositories.length)
   
   return (
     <div className={s.main}>
       <Profile data={props.data}/>
       
       {props.repositories.length ? <Works repositories={props.repositories}/> : <NotRepository />}
-      
+            
       
     </div>
   );

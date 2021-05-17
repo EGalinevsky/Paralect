@@ -1,0 +1,10 @@
+.paginator{
+    list-style: none;
+    display: flex;    
+}
+
+.paginator li {
+    padding: 10px;
+    border: 1px solid #000;
+    cursor: pointer;
+}
