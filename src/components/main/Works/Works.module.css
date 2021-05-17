@@ -27,6 +27,22 @@
     color: rgb(0, 0, 0);
     cursor: pointer;
 }
+span{
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+
+
+.prev{
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+.next{
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
 
 
 

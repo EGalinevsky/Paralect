@@ -96,7 +96,7 @@ export const Works = (props) => {
             onClick={hundlePrevBtn}
             disabled={currentPage == pages[0] ? true : false}
           >
-            prev        
+            <span className={s.prev}></span>     
           </button>
         </li>
         {pageDecrementBtn}
@@ -107,7 +107,7 @@ export const Works = (props) => {
             disabled={currentPage == pages[pages.length - 1] ? true : false}
             onClick={hundleNextBtn}
           >
-            next
+            <span className={s.next}></span>  
           </button>
         </li>
       </ul>
