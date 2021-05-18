@@ -37,7 +37,7 @@ export const Works = (props) => {
   for (let i = 1; i <= Math.ceil(props.repositories.length / itemsPage); ++i) {
     pages.push(i);
   }
-  console.log(currentPage)
+  
   const indexOfLastItem = currentPage * itemsPage;
   const indexOfFirstItem = indexOfLastItem - itemsPage;
   const currentItems = props.repositories.slice(

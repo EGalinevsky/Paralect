@@ -14,6 +14,7 @@ function App() {
   const [istate, setIstate] = useState(true)
   const [works, setWorks] = useState(true)
   const [loading, setLoading] = useState(false)
+  
 
   const submitHandler = async e => {    
     e.preventDefault()
@@ -23,8 +24,7 @@ function App() {
       const profileJSON = await profile.json()
 
       const repositories = await fetch(profileJSON.repos_url)
-      const repositoriesJSON = await repositories.json()
-      
+      const repositoriesJSON = await repositories.json()      
       
       if (profileJSON) {
         setData(profileJSON)
@@ -39,18 +39,19 @@ function App() {
     } finally{
       setLoading(false)
     }
-  }
-
-  
+  }  
 
   console.log('data без функции', data)
   console.log('repositories без функции', repositories)
 
+
+
   useEffect(() => {
-    setName('')    
+    setName('')
+
     console.log('Это useEffect repositories', repositories)
     console.log('Это useEffect data', data)
-  }, [data, repositories])
+  }, [data,repositories])
 
   const HandlerChange = (e) => {
     setName(e.target.value);
