@@ -1,19 +1,28 @@
-.main__works{
+ .main__works{
     width: 65%;
     padding-right: 56px;
-   
+
 }
 
+
+
+
+/* это бля пагинация без react-pagination */
 .works__title{
     font-weight: 600;
     font-size: 32px;
 }
 
 .paginator{
+    margin-top: 10px;
     list-style: none;
     display: flex;
     justify-content: flex-end;
     color: #808080;
+    position: absolute;
+    align-items: center;
+    right: 69px;
+    bottom: 28px;
 }
 
 .paginator li {     
@@ -28,12 +37,12 @@
     cursor: pointer;
 }
 span{
-    border: solid black;
+    border-bottom: solid #808080;
+    border-right: solid #808080;
     border-width: 0 3px 3px 0;
     display: inline-block;
     padding: 3px;
 }
-
 
 .prev{
     transform: rotate(135deg);
@@ -44,14 +53,18 @@ span{
     -webkit-transform: rotate(-45deg);
 }
 
-
+span:active{
+    border-color: #0064EB;
+}
 
 .paginator li button:disabled{
-    background: rgb(151, 151, 151);
+    opacity: .5;
+    border-color: #808080;
 }
 
 .active{
     background-color: rgb(65, 32, 255);
     border-radius: 3px;
     color: rgb(255, 255, 255);
-}
+} 
+

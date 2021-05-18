@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import './App.css';
 import { Header } from './components/header/header';
 import { Main } from './components/main/MainScreen';
@@ -39,20 +39,17 @@ function App() {
     } finally{
       setLoading(false)
     }
-
   }
+
+  
 
   console.log('data без функции', data)
   console.log('repositories без функции', repositories)
 
   useEffect(() => {
-    setName('')
-    
+    setName('')    
     console.log('Это useEffect repositories', repositories)
     console.log('Это useEffect data', data)
-    return (()=>{
-
-    })
   }, [data, repositories])
 
   const HandlerChange = (e) => {
