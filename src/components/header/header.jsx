@@ -3,7 +3,8 @@ import Frame from "./../../other/img/Frame.svg";
 import Search from "./../../other/img/image.svg";
 import s from "./header.module.css";
 
-export const Header = (props) => {
+export const Header = (props) => {  
+
   return (
     <div className={s.header}>
       <img className={s.header__img} src={Frame} alt="" />
@@ -13,7 +14,7 @@ export const Header = (props) => {
           <input
             value={props.name}
             className={s.search__input}
-            onChange={props.HandlerChange}
+            onChange={(e) => props.setName(e.target.value)}
             type="text"
             placeholder="Enter GitHub username"
           />

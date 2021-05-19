@@ -6,7 +6,7 @@ export const Repository = (props) => {
   return (
     <div className={s.repository__item}>
       
-      <a className={s.repository__link} href="#">
+      <a target="_blank" className={s.repository__link} href={props.href}>
         <h2 className={s.repository__title}>{props.name}</h2>
       </a>
 

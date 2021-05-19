@@ -4,13 +4,20 @@ import ReactPaginate from "react-paginate";
 import { Repository } from "./WorkRepository/Repository";
 import s from "./Works.module.css";
 
-export const Works = (props) => {
+export const Works = React.memo((props) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPage, setItemsPage] = useState(4);
 
   const [pageNumberLimit, setPageNumberLimit] = useState(5);
   const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5);
   const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
+
+
+  console.log(currentPage)
+  console.log(itemsPage)
+  console.log(pageNumberLimit)
+  console.log(maxPageNumberLimit)
+  console.log(minPageNumberLimit)
 
   const repositoriesData = (data) => {
     return (
@@ -19,6 +26,7 @@ export const Works = (props) => {
           <Repository
             key={rep.id}
             rep={rep}
+            href={rep.html_url}
             name={rep.name}
             title={rep.description}
           />
@@ -88,7 +96,7 @@ export const Works = (props) => {
 
   useEffect(()=>{
     setCurrentPage(1)
-    setPageNumberLimit(5)
+    setMinPageNumberLimit(0)
   },[props.data,pageNumberLimit])
 
   return (
@@ -122,7 +130,7 @@ export const Works = (props) => {
       </ul>
     </div>
   );
-};// Это пагинация без react-paginator
+});// Это пагинация без react-paginator
 
 // export default class Works extends React.Component {
 //   constructor(props) {
