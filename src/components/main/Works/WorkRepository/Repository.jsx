@@ -1,5 +1,5 @@
 import React from "react";
-import { NotRepository } from "../../NotRepository/NotRepository";
+
 import s from "./Repository.module.css";
 
 export const Repository = (props) => {

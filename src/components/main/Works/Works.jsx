@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Paginator } from "../Paginator/Paginator";
-import ReactPaginate from "react-paginate";
 import { Repository } from "./WorkRepository/Repository";
 import s from "./Works.module.css";
 
@@ -212,3 +210,6 @@ export const Works = React.memo((props) => {
 //     );
 //   }
 // }
+
+
+// Это пагинация react-paginator

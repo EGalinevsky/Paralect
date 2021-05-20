@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect,  useState } from 'react';
 import './App.css';
 import { Header } from './components/header/header';
 import { Main } from './components/main/MainScreen';
@@ -10,14 +10,15 @@ function App() {
   const [name, setName] = useState('');
   const [data, setData] = useState({});
   const [repositories, setRepositories] = useState([]);
-  const [users, setUsers] = useState(false)
-  const [istate, setIstate] = useState(true)
   const [loading, setLoading] = useState(false)
+  const [notUsers, setNotuser] = useState(false)
+  const [initial, setInitial] = useState(true)
 
 
   const submitHandler = async e => {      
     e.preventDefault()
     SerchApi()
+    setInitial(false)   
   }  
 
   async function SerchApi (){
@@ -31,23 +32,27 @@ function App() {
       
       if (profileJSON) {
         setData(profileJSON)
-        setRepositories(repositoriesJSON)
-        setUsers(false)        
-        setIstate(false)        
+        setRepositories(repositoriesJSON)  
+        
       }
     } catch (err) {
-      setUsers(true)
+      setNotuser(true)
       setData(false)
-      setIstate(false)
     } finally{
       setLoading(false)
     }
   }
 
-  console.log('1', data)
+
+
+  console.log('name', name)
+  console.log('1', data)  
   console.log('2', repositories)
-  console.log('3', users)
-  console.log('4', istate)
+  console.log('3', loading)  
+  console.log('4', notUsers)
+  console.log('5', initial)
+
+
 
   useEffect(() => {
     setName('')
@@ -63,11 +68,11 @@ function App() {
       <Header submitHandler={submitHandler} name={name} setName={setName}/>
       {loading &&  (<div className="loader"></div>)}
       
-      {Object.keys(data).length ? <Main data={data} repositories={repositories}   /> : null}
-      {users ? <InitialStateUserNotFound /> : null}
-      {istate && <InitialState />}
+      {Object.keys(data).length ? <Main data={data} repositories={repositories}/> :  (initial && <InitialState />)}
+      {notUsers ? <InitialStateUserNotFound /> : null}
+      {/* {istate && <InitialState />}       */}
     </div>
   );
 }
 
-export default App;
+export default React.memo(App);

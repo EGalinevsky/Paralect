@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Frame from "./../../other/img/Frame.svg";
 import Search from "./../../other/img/image.svg";
 import s from "./header.module.css";
 
-export const Header = (props) => {  
+export const Header = React.memo((props) => {  
 
   return (
     <div className={s.header}>
@@ -23,4 +23,4 @@ export const Header = (props) => {
       </div>
     </div>
   );
-};
+});
