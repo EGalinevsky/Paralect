@@ -5,7 +5,14 @@ import Following from './../../../other/img/provate.svg'
 
 export const Profile = (props) =>{
 
-    
+    const foll = props.data.followers
+    const followers = (foll) =>{
+        if (foll<1000){
+            return foll
+        }
+        return (foll/1000).toFixed(1)+'k';
+    }
+
     return(
         <div className={s.main__profile}>
         <img className={s.profile__img} src={props.data.avatar_url} alt="" />
@@ -17,7 +24,7 @@ export const Profile = (props) =>{
             
             <p className={s.profile__inner}>
                 <img src={Followers} alt="" />
-                &nbsp;{props.data.followers}
+                &nbsp;{followers(foll)}
                 &nbsp;followers</p>
             <p className={s.profile__inner}>
                 <img src={Following} alt="" />

@@ -11,7 +11,7 @@ export const Repository = (props) => {
       </a>
 
       <p className={s.repository__text}>
-        {props.title}
+        {props.title ? props.title : (<>&nbsp;</>)}
       </p>
       
     </div>
