@@ -10,7 +10,7 @@ export const Header = React.memo((props) => {
       <img className={s.header__img} src={Frame} alt="" />
       <div className={s.header__search}>
         <img className={s.search__img} src={Search} alt="" />
-        <form onSubmit={props.submitHandler}>
+        <form className={s.form_serch} onSubmit={props.submitHandler}>
           <input
             value={props.name}
             className={s.search__input}

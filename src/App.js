@@ -38,24 +38,18 @@ function App() {
     } catch (err) {
       setNotuser(true)
       setData(false)
-    } finally{
-      setLoading(false)
     }
   }
 
 
 
-  console.log('name', name)
-  console.log('1', data)  
-  console.log('2', repositories)
   console.log('3', loading)  
-  console.log('4', notUsers)
-  console.log('5', initial)
 
 
 
   useEffect(() => {
     setName('')
+    setLoading(false)
     console.log('Это useEffect repositories', repositories)
     console.log('Это useEffect data', data)
   }, [data,repositories])
@@ -66,10 +60,11 @@ function App() {
     <div className="App">
       
       <Header submitHandler={submitHandler} name={name} setName={setName}/>
-      {loading &&  (<div className="loader"></div>)}
+      
       
       {Object.keys(data).length ? <Main data={data} repositories={repositories}/> :  (initial && <InitialState />)}
       {notUsers ? <InitialStateUserNotFound /> : null}
+      {loading && (<div className="loader"></div>)}
       {/* {istate && <InitialState />}       */}
     </div>
   );

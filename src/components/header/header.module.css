@@ -9,7 +9,7 @@
 .header__img{
     width: 41px;
     height: 40px;
-    margin: 0 21.98px 0 41px;
+    margin: 0 22px 0 41px;
 }
 
 .header__search {
@@ -22,18 +22,21 @@
     align-items: center;
   }
   
-  .search__img {
+.search__img {
     width: 14px;
     height: 14px;
     margin: 5px;
     text-align: center;
   }
   
-  .search__input {
+.search__input {
     width: 450px;
     margin-left: 6px;
     border: 0; 
   }
+.form_serch{
+  width: 100%;
+}  
 
   input ::placeholder{
       color: #000;
@@ -43,3 +46,24 @@
   .search__input:focus {
     outline: none;
   }
+
+  @media screen and (max-width: 768px) { 
+    .header__search{
+      width:70%;
+    }
+    .search__input {
+      width: 70%;
+    }
+}  
+
+@media screen and (max-width: 480px) { 
+  .header__search{
+    width:70%;
+  }
+  .search__input {
+    width: 100%;
+  }
+  .header__img{
+    margin: 0 10px;
+  }
+} 
