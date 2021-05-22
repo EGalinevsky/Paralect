@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Repository } from "./WorkRepository/Repository";
 import s from "./Works.module.css";
 
+
 export const Works = React.memo((props) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPage, setItemsPage] = useState(4);

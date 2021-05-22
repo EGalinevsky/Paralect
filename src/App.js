@@ -1,4 +1,4 @@
-import React, { useEffect,  useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import { Header } from './components/header/header';
 import { Main } from './components/main/MainScreen';
@@ -15,25 +15,25 @@ function App() {
   const [initial, setInitial] = useState(true)
 
 
-  const submitHandler = async e => {      
+  const submitHandler = async e => {
     e.preventDefault()
     SerchApi()
-    setInitial(false)   
-  }  
+    setInitial(false)
+  }
 
-  async function SerchApi (){
+  async function SerchApi() {
     setLoading(true)
     try {
       const profile = await fetch(`https://api.github.com/users/${name}`)
       const profileJSON = await profile.json()
 
       const repositories = await fetch(profileJSON.repos_url)
-      const repositoriesJSON = await repositories.json()      
-      
+      const repositoriesJSON = await repositories.json()
+
       if (profileJSON) {
         setData(profileJSON)
-        setRepositories(repositoriesJSON)  
-        
+        setRepositories(repositoriesJSON)
+
       }
     } catch (err) {
       setNotuser(true)
@@ -43,7 +43,11 @@ function App() {
 
 
 
-  console.log('3', loading)  
+  console.log('1', data)
+  console.log('2', repositories)
+  console.log('3', loading)
+  console.log('4', notUsers)
+  console.log('5', initial)
 
 
 
@@ -52,20 +56,20 @@ function App() {
     setLoading(false)
     console.log('Это useEffect repositories', repositories)
     console.log('Это useEffect data', data)
-  }, [data,repositories])
+  }, [data, repositories])
 
-
+  const handlerChange = React.useCallback((e) => {
+    setName(e.target.value)
+  }, [])
 
   return (
     <div className="App">
-      
-      <Header submitHandler={submitHandler} name={name} setName={setName}/>
-      
-      
-      {Object.keys(data).length ? <Main data={data} repositories={repositories}/> :  (initial && <InitialState />)}
+      <Header submitHandler={submitHandler} name={name} handlerChange={handlerChange} />
+
+      {Object.keys(data).length ? <Main data={data} repositories={repositories} /> : (initial && <InitialState />)}
       {notUsers ? <InitialStateUserNotFound /> : null}
       {loading && (<div className="loader"></div>)}
-      {/* {istate && <InitialState />}       */}
+
     </div>
   );
 }

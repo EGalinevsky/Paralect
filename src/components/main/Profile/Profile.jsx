@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import s from "./Profile.module.css";
 import Followers from './../../../other/img/shared.svg'
 import Following from './../../../other/img/provate.svg'
 
+
 export const Profile = (props) =>{
+
+    const [value, setValue] = useState([1, 2, 3, 4, 10])
+    const getvalue = value[value.length-1]
+    console.log('fefefefefe', getvalue)
+
+
 
     const foll = props.data.followers
     const followers = (foll) =>{

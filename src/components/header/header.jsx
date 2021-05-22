@@ -3,8 +3,7 @@ import Frame from "./../../other/img/Frame.svg";
 import Search from "./../../other/img/image.svg";
 import s from "./header.module.css";
 
-export const Header = React.memo((props) => {  
-
+export const Header = React.memo((props) => {
   return (
     <div className={s.header}>
       <img className={s.header__img} src={Frame} alt="" />
@@ -14,7 +13,7 @@ export const Header = React.memo((props) => {
           <input
             value={props.name}
             className={s.search__input}
-            onChange={(e) => props.setName(e.target.value)}
+            onChange={props.handlerChange}
             type="text"
             placeholder="Enter GitHub username"
           />
