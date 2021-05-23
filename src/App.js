@@ -7,24 +7,27 @@ import { InitialState } from './components/main/InitialState/InitialState';
 
 function App() {
 
+  
+
   const [name, setName] = useState('');
   const [data, setData] = useState({});
   const [repositories, setRepositories] = useState([]);
   const [loading, setLoading] = useState(false)
   const [notUsers, setNotuser] = useState(false)
   const [initial, setInitial] = useState(true)
-
-
+  
   const submitHandler = async e => {
     e.preventDefault()
     SerchApi()
     setInitial(false)
   }
+  
+  const URL = `https://api.github.com/users/${name}`
 
   async function SerchApi() {
     setLoading(true)
     try {
-      const profile = await fetch(`https://api.github.com/users/${name}`)
+      const profile = await fetch(URL)
       const profileJSON = await profile.json()
 
       const repositories = await fetch(profileJSON.repos_url)
@@ -33,29 +36,17 @@ function App() {
       if (profileJSON) {
         setData(profileJSON)
         setRepositories(repositoriesJSON)
-
       }
     } catch (err) {
       setNotuser(true)
       setData(false)
+    } finally{
+      setLoading(false)
     }
   }
 
-
-
-  console.log('1', data)
-  console.log('2', repositories)
-  console.log('3', loading)
-  console.log('4', notUsers)
-  console.log('5', initial)
-
-
-
   useEffect(() => {
     setName('')
-    setLoading(false)
-    console.log('Это useEffect repositories', repositories)
-    console.log('Это useEffect data', data)
   }, [data, repositories])
 
   const handlerChange = React.useCallback((e) => {
@@ -74,4 +65,4 @@ function App() {
   );
 }
 
-export default React.memo(App);
+export default App;

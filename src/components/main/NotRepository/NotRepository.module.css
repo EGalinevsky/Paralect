@@ -1,9 +1,9 @@
-.NotRepository{
-    display: table;
-    width: 210px;
-    margin: auto;
-    padding: 157px 0;
-    text-align: center;
+.NotRepository{ 
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 

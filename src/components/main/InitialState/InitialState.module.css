@@ -1,9 +1,11 @@
 .InitialState{
-    display: table;
+    display: flex;
     width: 210px;
     margin: auto;
-    padding: 194px 0;
+    padding-top: 194px;
     text-align: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 

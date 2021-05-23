@@ -4,11 +4,9 @@ import search from "./../../../other/img/search.png";
 
 export const InitialState = () => {
   return (
-    <div className={s.InitialState}>
-  
+    <div className={s.InitialState}>  
         <img src={search} alt="" />
-        <p>Start with searching a GitHub user</p>
-      
+        <p>Start with searching a GitHub user</p>      
     </div>
   );
 };
