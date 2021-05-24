@@ -6,9 +6,6 @@ import { InitialStateUserNotFound } from './components/main/InitialStateUserNotF
 import { InitialState } from './components/main/InitialState/InitialState';
 
 function App() {
-
-  
-
   const [name, setName] = useState('');
   const [data, setData] = useState({});
   const [repositories, setRepositories] = useState([]);

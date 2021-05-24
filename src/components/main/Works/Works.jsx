@@ -4,8 +4,7 @@ import s from "./Works.module.css";
 
 
 export const Works = React.memo((props) => {
-  debugger;
-
+  
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPage, setItemsPage] = useState(4);
 

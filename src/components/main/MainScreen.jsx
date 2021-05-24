@@ -16,7 +16,7 @@ export const Main = (props) => {
         following={props.data.following}
       />
       {props.repositories.length ? (
-        <Works data={props.data} repositories={props.repositories} />
+        <Works  repositories={props.repositories} />
       ) : (
         <NotRepository />
       )}

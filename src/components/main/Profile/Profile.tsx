@@ -5,16 +5,16 @@ import Following from "./../../../other/img/provate.svg";
 import { followers } from "../../../other/utils";
 
 type Props = {
-  avatar_url : string
-  name : string
-  html_url : string
-  login : string
-  followersItem : number
-  following : number
+  avatar_url: string
+  name: string
+  html_url: string
+  login: string
+  followersItem: number
+  following: number
 }
-  
 
-export const Profile: React.FC<Props> = ({avatar_url,name,html_url,login,followersItem,following}) => {    
+
+export const Profile: React.FC<Props> = ({ avatar_url, name, html_url, login, followersItem, following }) => {
   return (
     <div className={s.main__profile}>
       <img className={s.profile__img} src={avatar_url} alt="" />
