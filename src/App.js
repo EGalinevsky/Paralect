@@ -6,17 +6,19 @@ import { InitialStateUserNotFound } from './components/main/InitialStateUserNotF
 import { InitialState } from './components/main/InitialState/InitialState';
 
 function App() {
+
   const [name, setName] = useState('');
   const [data, setData] = useState({});
   const [repositories, setRepositories] = useState([]);
   const [loading, setLoading] = useState(false)
-  const [notUsers, setNotuser] = useState(false)
+  const [notFoundUsers, setNotFoundUsersr] = useState(false)
   const [initial, setInitial] = useState(true)
   
   const submitHandler = async e => {
     e.preventDefault()
     SerchApi()
     setInitial(false)
+    setNotFoundUsersr(false)
   }
   
   const URL = `https://api.github.com/users/${name}`
@@ -32,10 +34,10 @@ function App() {
 
       if (profileJSON) {
         setData(profileJSON)
-        setRepositories(repositoriesJSON)
+        setRepositories(repositoriesJSON)        
       }
     } catch (err) {
-      setNotuser(true)
+      setNotFoundUsersr(true)
       setData(false)
     } finally{
       setLoading(false)
@@ -44,19 +46,24 @@ function App() {
 
   useEffect(() => {
     setName('')
+    
   }, [data, repositories])
+
+  
 
   const handlerChange = React.useCallback((e) => {
     setName(e.target.value)
   }, [])
-
+  console.log()
   return (
     <div className="App">
+
       <Header submitHandler={submitHandler} name={name} handlerChange={handlerChange} />
 
       {Object.keys(data).length ? <Main data={data} repositories={repositories} /> : (initial && <InitialState />)}
-      {notUsers ? <InitialStateUserNotFound /> : null}
+      
       {loading && (<div className="loader"></div>)}
+      {notFoundUsers ? <InitialStateUserNotFound /> : null}
 
     </div>
   );
