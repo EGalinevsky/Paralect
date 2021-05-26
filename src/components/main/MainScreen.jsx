@@ -2,7 +2,7 @@ import React from "react";
 import s from "./Main.module.css";
 import { NotRepository } from "./NotRepository/NotRepository";
 import { Profile } from "./Profile/Profile";
-import { Works } from "./Works/Works";
+import  {Works}  from "./Works/Works";
 
 export const Main = (props) => {
   return (

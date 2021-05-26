@@ -36,7 +36,10 @@ export const Works = React.memo((props) => {
   for (let i = 1; i <= Math.ceil(props.repositories.length / itemsPage); ++i) {
     pages.push(i);
   }
+
   
+
+
   const indexOfLastItem = currentPage * itemsPage;
   const indexOfFirstItem = indexOfLastItem - itemsPage;
   const currentItems = props.repositories.slice(
@@ -88,7 +91,7 @@ export const Works = React.memo((props) => {
   useEffect(()=>{
     setCurrentPage(1)
     setMinPageNumberLimit(0)
-  },[props.data,pageNumberLimit])
+  },[props.repositories ,pageNumberLimit])
 
   return (
     <div className={s.main__works}>
@@ -122,3 +125,5 @@ export const Works = React.memo((props) => {
     </div>
   );
 });
+
+
