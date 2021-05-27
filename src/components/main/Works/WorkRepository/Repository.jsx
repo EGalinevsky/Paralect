@@ -10,7 +10,7 @@ export const Repository = (props) => {
         </a>
 
         <p className={s.repository__text}>
-          {props.title ? props.title : <span> </span>}
+          {props.title ? props.title : null}
         </p>
       </div>
     </div>

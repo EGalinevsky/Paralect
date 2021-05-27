@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import { Header } from './components/header/header';
 import { Main } from './components/main/MainScreen';
-import { InitialStateUserNotFound } from './components/main/InitialStateUserNotFound/InitialStateUserNotFound';
-import { InitialState } from './components/main/InitialState/InitialState';
 import axios from 'axios';
 import { Switch, Route, useHistory } from 'react-router-dom'
+import { InitialStateUserNotFound } from './components/pages/InitialStateUserNotFound/InitialStateUserNotFound';
+import { InitialState } from './components/pages/InitialState/InitialState';
 
 function App() {
 
@@ -29,44 +29,42 @@ function App() {
   async function SerchApi() {
     setLoading(true)
     try {
-
       const profile = await axios.get(URL)
         .then((res => res.data))
       const repositories = await axios.get(profile.repos_url)
         .then((rep => rep.data))
-
       if (profile) {
         setData(profile)
         setRepositories(repositories)
       }
     } catch (err) {
       setNotFoundUsersr(true)
-      // return <Redirect to={"/usernotfound"} />
     } finally {
       setLoading(false)
     }
   }
-
-
+  
   console.log(repositories)
   console.log(data)
   console.log(notFoundUsers)
+  console.log(repositories.length)
 
-  useEffect(() => {
+  useEffect(() => {    
     setName('')
-    if (!Object.keys(data).length) {
-      if (!notFoundUsers) {
-        history.push("/")
-
-      } else {
-        history.push("/usernotfound")
-      }
-    } else {
+    if (Object.keys(data).length && repositories.length) {
       history.push("/main")
+    } else if (Object.keys(data).length || repositories.length)  {     
+      history.push("/notrepositories")      
+    } else {
+      history.push("/") 
     }
-  }, [data, repositories])
+  }, [data,repositories])
 
-
+  useEffect(()=>{
+    if (notFoundUsers) {
+      history.push("/usernotfound")
+    }
+  },[notFoundUsers])
 
   const handlerChange = React.useCallback((e) => {
     setName(e.target.value)
@@ -80,6 +78,7 @@ function App() {
       <Switch>
         <Route path='/' exact render={() => <InitialState />} />
         <Route path='/main' render={() => <Main data={data} repositories={repositories} />} />
+        <Route path='/notrepositories' render={() => <Main data={data} repositories={repositories} />} />
         <Route path='/usernotfound' render={() => <InitialStateUserNotFound />} />
       </Switch>
 

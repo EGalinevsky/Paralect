@@ -5,17 +5,16 @@ import s from "./Works.module.css";
 
 export const Works = React.memo((props) => {
   
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPage, setItemsPage] = useState(4);
-
-  const [pageNumberLimit, setPageNumberLimit] = useState(5);
+  const itemsPage = 4;
+  const pageNumberLimit = 5;
+  const [currentPage, setCurrentPage] = useState(1);  
   const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5);
   const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
 
 
   const repositoriesData = (data) => {
     return (
-      <ul>
+      <ul className={s.works__wrapper}>
         {data.map((rep) => (
           <Repository
             key={rep.id}
@@ -69,7 +68,7 @@ export const Works = React.memo((props) => {
           key={num}
           id={num}
           onClick={handleClick}
-          className={currentPage == num ? s.active : null}
+          className={currentPage === num ? s.active : null}
         >
           {num}
         </li>
@@ -105,7 +104,7 @@ export const Works = React.memo((props) => {
         <li>
           <button
             onClick={hundlePrevBtn}
-            disabled={currentPage == pages[0] ? true : false}
+            disabled={currentPage === pages[0] ? true : false}
           >
             <span className={s.prev}></span>
           </button>
@@ -115,7 +114,7 @@ export const Works = React.memo((props) => {
         {pageIncrementBtn}
         <li>
           <button
-            disabled={currentPage == pages[pages.length - 1] ? true : false}
+            disabled={currentPage === pages[pages.length - 1] ? true : false}
             onClick={hundleNextBtn}
           >
             <span className={s.next}></span>
