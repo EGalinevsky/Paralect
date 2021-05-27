@@ -48,6 +48,10 @@
     align-items: center;
 }
 
+.profile__inner img{
+    margin-right: 3px;
+}
+
 .profile__inner:last-child{
     margin-right: 0;
 }
