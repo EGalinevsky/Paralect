@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Repository } from "./WorkRepository/Repository";
+import { repositoriesData } from "./repositoriesData";
 import s from "./Works.module.css";
 
 
@@ -12,20 +12,7 @@ export const Works = React.memo((props) => {
   const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
 
 
-  const repositoriesData = (data) => {
-    return (
-      <ul className={s.works__wrapper}>
-        {data.map((rep) => (
-          <Repository
-            key={rep.id}
-            href={rep.html_url}
-            name={rep.name}
-            title={rep.description}
-          />
-        ))}
-      </ul>
-    );
-  };
+  
 
   const handleClick = (e) => {
     setCurrentPage(Number(e.target.id));
@@ -35,9 +22,6 @@ export const Works = React.memo((props) => {
   for (let i = 1; i <= Math.ceil(props.repositories.length / itemsPage); ++i) {
     pages.push(i);
   }
-
-  
-
 
   const indexOfLastItem = currentPage * itemsPage;
   const indexOfFirstItem = indexOfLastItem - itemsPage;

@@ -70,7 +70,6 @@
         display: flex;
         align-items: center;
         flex-direction: column;
-        margin-right: 0;
     }
     .profile__img {
         width:200px;
@@ -79,5 +78,8 @@
     .profile__follows{
         display: flex;
         flex-direction: column;
+    }
+    .profile__link{
+        font-size: 14px;
     }
 }

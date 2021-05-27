@@ -3,7 +3,7 @@
     margin-bottom: 24px;
     background: #fff;
     border-radius: 6px;
-    padding: 24px 0 24px 32px;    
+    padding: 24px 32px;    
 }
 
 .repository__link{
@@ -30,4 +30,16 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+
+@media screen and (max-width: 768px) { 
+    .repository__item{
+        padding: 12px 16px; 
+    }
+    .repository__title{
+        font-size: 18px;
+    }
+    .repository__text{
+        font-size: 13px;
+    }
 }

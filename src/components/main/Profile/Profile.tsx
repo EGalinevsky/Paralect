@@ -13,7 +13,6 @@ type Props = {
   following: number
 }
 
-
 export const Profile: React.FC<Props> = ({ avatar_url, name, html_url, login, followersItem, following }) => {
 
   return (
