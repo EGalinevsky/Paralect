@@ -43,11 +43,6 @@ function App() {
       setLoading(false)
     }
   }
-  
-  console.log(repositories)
-  console.log(data)
-  console.log(notFoundUsers)
-  console.log(repositories.length)
 
   useEffect(() => {    
     setName('')
