@@ -1,5 +1,5 @@
 import React from 'react'
-import { Repository } from './WorkRepository/Repository';
+import { Repository } from './RepositoryItem/Repository';
 import s from "./Works.module.css";
 
 export const repositoriesData = (data) => {

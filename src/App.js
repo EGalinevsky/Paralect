@@ -12,7 +12,7 @@ function App() {
   const [name, setName] = useState('');
   const [data, setData] = useState({});
   const history = useHistory();
-  const [repositories, setRepositories] = useState([]);
+
   const [loading, setLoading] = useState(false);
   const [notFoundUsers, setNotFoundUsersr] = useState(false);
  
@@ -25,17 +25,15 @@ function App() {
   }
 
   const URL = `https://api.github.com/users/${name}`
+  
 
   async function SerchApi() {
     setLoading(true)
     try {
       const profile = await axios.get(URL)
-        .then((res => res.data))
-      const repositories = await axios.get(profile.repos_url)
-        .then((rep => rep.data))
+      .then(res => res.data)
       if (profile) {
         setData(profile)
-        setRepositories(repositories)
       }
     } catch (err) {
       setNotFoundUsersr(true)
@@ -46,20 +44,18 @@ function App() {
 
   useEffect(() => {    
     setName('')
-    if (Object.keys(data).length && repositories.length) {
-      history.push("/main")
-    } else if (Object.keys(data).length || repositories.length)  {     
-      history.push("/notrepositories")      
+    if (Object.keys(data).length) {
+      history.push("/main")      
     } else {
       history.push("/") 
     }
-  }, [data,repositories])
+  }, [data,history])
 
   useEffect(()=>{
     if (notFoundUsers) {
       history.push("/usernotfound")
     }
-  },[notFoundUsers])
+  },[notFoundUsers,history])
 
   const handlerChange = React.useCallback((e) => {
     setName(e.target.value)
@@ -72,11 +68,9 @@ function App() {
 
       <Switch>
         <Route path='/' exact render={() => <InitialState />} />
-        <Route path='/main' render={() => <Main data={data} repositories={repositories} />} />
-        <Route path='/notrepositories' render={() => <Main data={data} repositories={repositories} />} />
+        <Route path='/main' render={() => <Main name={name} data={data}/>} />
         <Route path='/usernotfound' render={() => <InitialStateUserNotFound />} />
       </Switch>
-
       {loading && (<div className="loader"></div>)}
     </div>
   );

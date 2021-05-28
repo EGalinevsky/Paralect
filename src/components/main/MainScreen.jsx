@@ -3,8 +3,10 @@ import s from "./Main.module.css";
 import { NotRepository } from "../pages/NotRepository/NotRepository";
 import { Profile } from "./Profile/Profile";
 import  {Works}  from "./Works/Works";
+import { WorksContainer } from "./Works/WorksContainer";
 
 export const Main = (props) => {
+  
   
   return (
     <div className={s.main}>
@@ -16,8 +18,9 @@ export const Main = (props) => {
         followersItem={props.data.followers}
         following={props.data.following}
       />
-      {props.repositories.length ?
-        <Works  repositories={props.repositories} />
+      {props.data.public_repos ?
+        // <Works public_repos={props.data.public_repos} repositories={props.repositories} />
+        <WorksContainer data={props.data} repositories={props.repositories}/>
        : 
         <NotRepository />
       }

@@ -6,13 +6,11 @@ import s from "./Works.module.css";
 export const Works = React.memo((props) => {
   
   const itemsPage = 4;
-  const pageNumberLimit = 5;
+  const [pageNumberLimit, setPageNumberLimit] = useState(5)
+ 
   const [currentPage, setCurrentPage] = useState(1);  
   const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5);
-  const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
-
-
-  
+  const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);  
 
   const handleClick = (e) => {
     setCurrentPage(Number(e.target.id));
@@ -73,13 +71,17 @@ export const Works = React.memo((props) => {
 
   useEffect(()=>{
     setCurrentPage(1)
+    setPageNumberLimit(5)
     setMinPageNumberLimit(0)
-  },[props.repositories ,pageNumberLimit])
+  },[props.repositories ,pageNumberLimit,pageNumberLimit])
 
+  useEffect(()=>{
+    setMaxPageNumberLimit(5)
+  },[props.public_repos])
   return (
     <div className={s.main__works}>
       <h1 className={s.works__title}>
-        Repositories ({props.repositories.length})
+        Repositories ({props.public_repos})
       </h1>
 
       {repositoriesData(currentItems)}
