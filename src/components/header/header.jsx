@@ -3,7 +3,7 @@ import Frame from "./../../utils/img/Frame.svg";
 import Search from "./../../utils/img/image.svg";
 import s from "./header.module.css";
 
-export const Header = React.memo((props) => {
+export const Header =(props) => {
   return (
     <div className={s.header}>
       <img className={s.header__img} src={Frame} alt="Github" />
@@ -22,4 +22,4 @@ export const Header = React.memo((props) => {
       </div>
     </div>
   );
-});
+};

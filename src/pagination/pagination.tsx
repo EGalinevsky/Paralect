@@ -1,12 +1,21 @@
 import React, { useEffect, useState } from "react";
 import s from "./pagination.module.css";
 
-export const Pagination = (props) => {
-  const portionSize = 5;
-  let [portionNumber, setPortionNumber] = useState(1);
-  const maxPageNumberLimit  = 5; 
+type PropsType = {
+  currentPage: number,
+  login: string,
+  setCurrentPage: (id:number) => void,
+  totalRepositoriesCount: number,
+  itemsPage: number,
+  portionSize?: number,
+}
 
-  let pagesCount = Math.ceil(props.totalRepositoriesCount / props.itemsPage);
+export const Pagination: React.FC<PropsType> = ({ currentPage, login, setCurrentPage, totalRepositoriesCount, itemsPage, portionSize = 5 }) => {
+
+  let [portionNumber, setPortionNumber] = useState<number>(1);
+  const maxPageNumberLimit = 5;
+
+  let pagesCount = Math.ceil(totalRepositoriesCount / itemsPage);
 
   let pages = [];
   for (let i = 1; i <= pagesCount; i++) {
@@ -14,14 +23,14 @@ export const Pagination = (props) => {
   }
 
   const hundleNextBtn = () => {
-    props.setCurrentPage(props.currentPage + 1);
-    if (props.currentPage + 1 > portionNumber*maxPageNumberLimit) {      
+    setCurrentPage(currentPage + 1);
+    if (currentPage + 1 > portionNumber * maxPageNumberLimit) {
       setPortionNumber(portionNumber + 1);
     }
   };
   const hundlePrevBtn = () => {
-    props.setCurrentPage(props.currentPage - 1);
-    if (props.currentPage - 1 < ((portionNumber - 1) * portionSize + 1)) {
+    setCurrentPage(currentPage - 1);
+    if (currentPage - 1 < ((portionNumber - 1) * portionSize + 1)) {
       setPortionNumber(portionNumber - 1);
     }
   };
@@ -31,27 +40,26 @@ export const Pagination = (props) => {
   let leftPortionPageNumber = (portionNumber - 1) * portionSize + 1;
   let rightPortionPageNumber = portionNumber * portionSize;
 
-  useEffect(()=>{
-    props.setCurrentPage(1)
+  useEffect(() => {
+    setCurrentPage(1)
     setPortionNumber(1)
-  },[props.login])
+  }, [login, setCurrentPage])
 
   return (
     <div className={s.pagination}>
       <p className={s.pagination__text}>
-        {`${props.currentPage * props.itemsPage - props.itemsPage + 1}-${
-          props.currentPage * props.itemsPage
-        } of ${props.totalRepositoriesCount} items`}
+        {`${currentPage * itemsPage - itemsPage + 1}-${currentPage * itemsPage
+          } of ${totalRepositoriesCount} items`}
       </p>
       <li className={s.btn__prev}>
-          <button
-            onClick={hundlePrevBtn}
-            disabled={props.currentPage === pages[0] ? true : false}
-            
-          >
-            <span className={s.prev}></span>
-          </button>
-        </li>
+        <button
+          onClick={hundlePrevBtn}
+          disabled={currentPage === pages[0] ? true : false}
+
+        >
+          <span className={s.prev}></span>
+        </button>
+      </li>
       {portionNumber > 1 && (
         <button
           className={s.btn_paginator}
@@ -71,9 +79,9 @@ export const Pagination = (props) => {
             .map((p) => {
               return (
                 <button
-                  className={props.currentPage === p ? s.active : null}
+                  className={currentPage === p ? s.active : null!}
                   key={p}
-                  onClick={() => props.setCurrentPage(p)}
+                  onClick={() => setCurrentPage(p)}
                 >
                   {p}
                 </button>
@@ -91,16 +99,16 @@ export const Pagination = (props) => {
         >
           ...
         </button>
-        
+
       )}
       <li className={s.btn__prev}>
-          <button
-            disabled={props.currentPage === pages[pages.length - 1] ? true : false}
-            onClick={hundleNextBtn}
-          >
-            <span className={s.next}></span>
-          </button>
-        </li>
+        <button
+          disabled={currentPage === pages[pages.length - 1] ? true : false}
+          onClick={hundleNextBtn}
+        >
+          <span className={s.next}></span>
+        </button>
+      </li>
     </div>
   );
 };

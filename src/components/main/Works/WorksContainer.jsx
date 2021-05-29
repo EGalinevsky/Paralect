@@ -11,9 +11,6 @@ export const WorksContainer = (props) => {
   const itemsPage = 4;
   const totalRepositoriesCount = props.data.public_repos;
 
-  console.log(currentPage);
-  console.log(loading);
-
   const URLRep = `https://api.github.com/users/${props.data.login}/repos?page=${currentPage}&per_page=${itemsPage}`;
 
   useEffect(() => {
