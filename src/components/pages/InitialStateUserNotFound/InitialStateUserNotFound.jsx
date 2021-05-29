@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./InitialStateUserNotFound.module.css";
-import user from "./../../../other/img/user.png";
+import user from "./../../../utils/img/user.png";
 
 export const InitialStateUserNotFound = () => {
   return (

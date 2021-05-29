@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./NotRepository.module.css";
-import rep from "./../../../other/img/rep.png";
+import rep from "./../../../utils/img/rep.png";
 
 export const NotRepository = () => {
   return (

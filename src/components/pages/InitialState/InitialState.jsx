@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./InitialState.module.css";
-import search from "./../../../other/img/search.png";
+import search from "./../../../utils/img/search.png";
 
 export const InitialState = () => {
   return (

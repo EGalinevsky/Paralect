@@ -1,8 +1,8 @@
 import React from "react";
 import s from "./Profile.module.css";
-import Followers from "./../../../other/img/shared.svg";
-import Following from "./../../../other/img/provate.svg";
-import { followers } from "../../../other/utils";
+import Followers from "./../../../utils/img/shared.svg";
+import Following from "./../../../utils/img/provate.svg";
+import { followers } from "../../../utils/utils";
 
 type Props = {
   avatar_url: string
@@ -17,7 +17,7 @@ export const Profile: React.FC<Props> = ({ avatar_url, name, html_url, login, fo
 
   return (
     <div className={s.main__profile}>
-      <img className={s.profile__img} src={avatar_url} alt="" />
+      <img className={s.profile__img} src={avatar_url} alt="avatar_url" />
 
       <h2 className={s.profile__name}>{name}</h2>
       <a rel="noreferrer" href={html_url} target='_blank'  className={s.profile__link} >
@@ -26,12 +26,12 @@ export const Profile: React.FC<Props> = ({ avatar_url, name, html_url, login, fo
 
       <div className={s.profile__follows}>
         <p className={s.profile__inner}>
-          <img src={Followers} alt="" />
+          <img src={Followers} alt="Followers" />
           {followers(followersItem)}
           &nbsp;followers
         </p>
         <p className={s.profile__inner}>
-          <img src={Following} alt="" />
+          <img src={Following} alt="Following" />
           {following}
           &nbsp;following
         </p>

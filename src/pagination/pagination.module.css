@@ -1,0 +1,76 @@
+.pagination{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;   
+}
+
+.btn__item{
+    list-style-type: none;    
+}
+
+.pagination__text{
+    color: #808080;
+    margin-right: 24px;
+    font-size: 14px;
+}
+
+.btn__item button{
+    background: none;
+    border: none;
+    color: #808080;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 400;
+    margin: 0 2px;
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+.btn__item button.active{
+    background-color: rgb(65, 32, 255);
+    border-radius: 3px;
+    color: rgb(255, 255, 255);
+}
+
+
+.btn_paginator{
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: #808080;
+}
+.btn__prev button{
+    border: none;
+    background: transparent;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+}
+
+
+span{
+    border-bottom: solid #808080;
+    border-right: solid #808080;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+
+span:active{
+    border-color: #0064EB;
+}
+
+.prev{
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+.next{
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+.btn__prev button:disabled{
+    opacity: .5;
+    border-color: #808080;
+}
+
