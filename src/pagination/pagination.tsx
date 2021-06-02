@@ -51,6 +51,7 @@ export const Pagination: React.FC<PropsType> = ({ currentPage, login, setCurrent
         {`${currentPage * itemsPage - itemsPage + 1}-${currentPage * itemsPage
           } of ${totalRepositoriesCount} items`}
       </p>
+      <div className={s.pagination__item}>
       <li className={s.btn__prev}>
         <button
           onClick={hundlePrevBtn}
@@ -109,6 +110,8 @@ export const Pagination: React.FC<PropsType> = ({ currentPage, login, setCurrent
           <span className={s.next}></span>
         </button>
       </li>
+      </div>
+      
     </div>
   );
 };

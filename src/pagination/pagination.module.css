@@ -2,7 +2,8 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    align-items: center;   
+    align-items: center;
+    flex-wrap: wrap;   
 }
 
 .btn__item{
@@ -33,7 +34,9 @@
     color: rgb(255, 255, 255);
 }
 
-
+.pagination__item{
+    display: flex;
+}
 .btn_paginator{
     background: none;
     border: none;
@@ -74,3 +77,9 @@ span:active{
     border-color: #808080;
 }
 
+@media screen and (max-width: 320px) { 
+    
+    .pagination__text{
+        margin-right: 5px;
+    }
+}
